@@ -6,10 +6,12 @@
 }
 
 @theme inline {
+  --color-brand-primary:#A62339;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-manrope: var(--font-manrope);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +21,22 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities{
+   button,
+  a {
+    @apply cursor-pointer;
+  }
+   .app-container {
+    @apply px-4 sm:px-6 md:px-10 lg:px-12 ;
+  }
+   .btn {
+    @apply inline-flex gap-1 border p-2 items-center justify-center shadow-sm transition duration-150 ease-in-out font-[500] cursor-pointer;
+  }
+   .btn-primary {
+    @apply bg-brand-primary border-brand-primary hover:bg-brand-primary/80 text-white text-sm font-medium;
+  }
+   .btn-primary-border {
+    @apply  border-brand-primary hover:bg-brand-primary/80 hover:text-white text-black text-sm font-medium;
+  }
 }
+
