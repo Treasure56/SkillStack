@@ -38,5 +38,8 @@
    .btn-primary-border {
     @apply  border-brand-primary hover:bg-brand-primary/80 hover:text-white text-black text-sm font-medium;
   }
+  .app-input{
+    @apply rounded-md border border-neutral-400 outline-brand-primary p-2 
+  }
 }
 
