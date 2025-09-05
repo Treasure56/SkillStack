@@ -13,10 +13,10 @@ export default function Page() {
         </button>
 
         <div className="flex flex-col py-6 justify-center items-center text-center max-w-3xl ">
-          <h1 className="text-5xl font-semibold -tracking-[2%] leading-[1.2]">
+          <h1 className="md:text-5xl text-2xl font-semibold -tracking-[2%] leading-[1.2]">
             Build Your Career&apos;s <br /> Foundation Organize Your Growth
           </h1>
-          <p className="text-lg text-neutral-600 mt-4 max-w-2xl">
+          <p className="md:text-lg text-sm text-neutral-600 mt-4 max-w-2xl">
             SkillStack is your personal command center for professional
             development. Log your skills, set mastery goals, and watch your
             potential expand.
