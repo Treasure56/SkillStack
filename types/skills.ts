@@ -1,46 +1,46 @@
 export type Skills = {
-  name: string;
-  progress: number; // 0 - 100%
-  user: string
+  _id: string
+  skill: string;
+  category: string;
+  level: "Beginner" | "Intermediate" | "Advanced" | "Expert";
   createdAt: Date;
-  updatedAt: Date;
 }
 
 export const dummySkills: Skills[] = [
   {
-    name: 'HTML',
-    progress: 80,
-    user: '1',
+    skill: 'HTML',
+    level: 'Expert',
+    _id: '1',
     createdAt: new Date(),
-    updatedAt: new Date(),
+    category: 'Technology',
   },
   {
-    name: 'CSS',
-    progress: 70,
-    user: '1',
+    skill: 'CSS',
+    level: 'Advanced',
+    _id: '2',
     createdAt: new Date(),
-    updatedAt: new Date(),
+    category: 'Design'
   },
   {
-    name: 'JavaScript',
-    progress: 60,
-    user: '1',
+    skill: 'JavaScript',
+    level: 'Intermediate',
+    _id: '3',
     createdAt: new Date(),
-    updatedAt: new Date(),
+    category: 'Technology'
   },
   {
-    name: 'TypeScript',
-    progress: 50,
-    user: '1',
+    skill: 'TypeScript',
+    level: 'Intermediate',
+    _id: '4',
     createdAt: new Date(),
-    updatedAt: new Date(),
+    category: 'Technology'
   },
   {
-    name: 'React',
-    progress: 40,
-    user: '1',
+    skill: 'React',
+    level: 'Intermediate',
+    _id: '5',
     createdAt: new Date(),
-    updatedAt: new Date(),
+    category: 'Technology'
   },
 ]
 

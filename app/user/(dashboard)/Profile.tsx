@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Profile() {
   return (
-    <div className="flex flex-col md:flex-row gap-3 items-center">
+    <div className="flex flex-col md:flex-row gap-3 items-center py-6">
       <Avatar className="h-24 w-24 md:h-32 md:w-32 bg-gray-700">
         <AvatarImage src="" />
         <AvatarFallback className="bg-neutral-600 font-bold text-white md:text-3xl">

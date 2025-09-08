@@ -1,5 +1,5 @@
 import { FaGraduationCap } from "react-icons/fa";
-import OverviewCard from "./OverviewCard";
+import OverviewCard from "../../components/ui/OverviewCard";
 
 export default function TotalSkillsCard() {
   return (

@@ -1,5 +1,5 @@
 import { IoStatsChart } from "react-icons/io5";
-import OverviewCard from "./OverviewCard";
+import OverviewCard from "../../components/ui/OverviewCard";
 
 export default function AvgProgressCard() {
   return (

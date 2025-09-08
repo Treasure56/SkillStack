@@ -1,5 +1,5 @@
 import { BiSolidCategoryAlt } from "react-icons/bi";
-import OverviewCard from "./OverviewCard";
+import OverviewCard from "../../components/ui/OverviewCard";
 
 export default function CategoriesCard() {
   return (

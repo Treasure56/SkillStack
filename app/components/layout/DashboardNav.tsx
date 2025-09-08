@@ -1,9 +1,11 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { paths } from "@/utils/paths";
+import { icons } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LuBadgeHelp, LuHouse, LuUser } from "react-icons/lu";
 
 export default function DashboardNav() {
   const pathName = usePathname();
@@ -20,20 +22,21 @@ export default function DashboardNav() {
           />
         </Link>
         <nav className="flex gap-6">
-          {navlinks.map(({ href, label }) => (
+          {navlinks.map((v,i ) => (
             <Link
-              key={href}
-              href={href}
+              key={i}
+              href={v.href}
               className={
                 cn(
-                  "py-3 px-2 rounded-lg font-medium",
-                  isActive(href)
+                  "py-1 px-3 rounded-lg font-medium flex items-center gap-2",
+                  isActive(v.href)
                     ? "btn btn-primary"
                     : "text-neutral-600 hover:text-neutral-900"
                 )
               }
             >
-              {label}
+              {v.icon}
+              {v.label}
             </Link>
           ))}
         </nav>
@@ -43,7 +46,7 @@ export default function DashboardNav() {
 }
 
 const navlinks = [
-  { href: paths.dashboard, label: "Dashboard" },
-  { href: paths.profile, label: "Profile" },
-  { href: paths.help, label: "Help & Support" },
+  { href: paths.dashboard, label: "Dashboard", icon:<LuHouse /> },
+  { href: paths.profile, label: "Profile", icon :<LuUser/>},
+  { href: paths.help, label: "Help & Support", icon:<LuBadgeHelp />},
 ];
