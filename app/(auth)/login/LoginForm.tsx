@@ -8,11 +8,11 @@ import { useRouter } from "next/navigation";
 import { FormEvent} from "react";
 
 export default function LoginForm() {
+  const router = useRouter()
   // extract the store action
   const { setUser } = useUserStore();
 
   //Local state for controlled input
-const router = useRouter()
   const handleFormSubmit = (e:FormEvent) =>{
     e.preventDefault() // to stop page reload
     const formData = new FormData(e.currentTarget as unknown as HTMLFormElement)
@@ -38,7 +38,7 @@ const router = useRouter()
           <AppInput key={i} {...field} />
         ))}
         </div>
-        <FormButton  className="btn-primary !px-4 py-3 w-full font-medium rounded-md">
+        <FormButton  className="btn-primary !px-4 py-3 w-full font-medium rounded-md text-center">
           Login
         </FormButton>
         <p>Don&apos;t have an account? <Link href={paths.register} className="text-brand-primary">Sign Up</Link></p>

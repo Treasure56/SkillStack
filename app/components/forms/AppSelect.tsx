@@ -1,12 +1,19 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { ReactNode } from "react";
+import { AppInputProps } from "./AppInput";
 
 export type AppSelectOptions = {
   label: ReactNode;
   value: string;
 };
 
-export type AppSelectProps = {
+export type AppSelectProps = Omit<AppInputProps, "placeholder"> & {
   label: string;
   options: AppSelectOptions[];
   placeholder?: string;
@@ -16,6 +23,7 @@ export type AppSelectProps = {
 
 export default function AppSelect({
   label,
+  name,
   options,
   placeholder = "Select an option",
   value,
@@ -24,7 +32,7 @@ export default function AppSelect({
   return (
     <div className="flex flex-col gap-1 w-full">
       <label className="font-medium">{label}</label>
-      <Select value={value} onValueChange={onChange} >
+      <Select name={name} value={value} onValueChange={onChange}>
         <SelectTrigger className="w-full rounded-md border border-neutral-400 outline-brand-primary py-5">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>

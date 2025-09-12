@@ -1,46 +1,46 @@
+
 export type Skills = {
-  _id: string
+  _id: string;
   skill: string;
   category: string;
-  level: "Beginner" | "Intermediate" | "Advanced" | "Expert";
+  // level: "Beginner" | "Intermediate" | "Advanced" | "Expert";
   createdAt: Date;
-}
+};
 
 export const dummySkills: Skills[] = [
   {
-    skill: 'HTML',
-    level: 'Expert',
-    _id: '1',
+    skill: "HTML",
+    // level: "Expert",
+    _id: "1",
     createdAt: new Date(),
-    category: 'Technology',
+    category: "Technology",
   },
   {
-    skill: 'CSS',
-    level: 'Advanced',
-    _id: '2',
+    skill: "CSS",
+    // level: "Advanced",
+    _id: "2",
     createdAt: new Date(),
-    category: 'Design'
+    category: "Design",
   },
   {
-    skill: 'JavaScript',
-    level: 'Intermediate',
-    _id: '3',
+    skill: "JavaScript",
+    // level: "Intermediate",
+    _id: "3",
     createdAt: new Date(),
-    category: 'Technology'
+    category: "Technology",
   },
   {
-    skill: 'TypeScript',
-    level: 'Intermediate',
-    _id: '4',
+    skill: "TypeScript",
+    // level: "Intermediate",
+    _id: "4",
     createdAt: new Date(),
-    category: 'Technology'
+    category: "Technology",
   },
   {
-    skill: 'React',
-    level: 'Intermediate',
-    _id: '5',
+    skill: "React",
+    // level: "Intermediate",
+    _id: "5",
     createdAt: new Date(),
-    category: 'Technology'
+    category: "Technology",
   },
-]
-
+];

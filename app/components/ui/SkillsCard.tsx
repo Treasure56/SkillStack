@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { Skills } from "@/types/skills";
@@ -40,11 +40,14 @@ export default function SkillsCard({ skill, category }: Skills) {
             <HiOutlineDotsVertical />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="space-y-2">
-            <DeleteModal>
+            <DeleteModal
+              skill={{ _id: crypto.randomUUID(), skill, category, createdAt: new Date() }}
+            >
               <button className="text-brand-primary bg-red-100 rounded-lg p-2 w-full">
                 Delete
               </button>
             </DeleteModal>
+
             <EdithSkill>
               <button className="text-sky-500 w-full">Edit</button>
             </EdithSkill>
