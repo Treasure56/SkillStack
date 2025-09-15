@@ -3,6 +3,7 @@ export type Skills = {
   _id: string;
   skill: string;
   category: string;
+  userId: string;
   // level: "Beginner" | "Intermediate" | "Advanced" | "Expert";
   createdAt: Date;
 };
@@ -14,6 +15,7 @@ export const dummySkills: Skills[] = [
     _id: "1",
     createdAt: new Date(),
     category: "Technology",
+    userId: "user1",
   },
   {
     skill: "CSS",
@@ -21,6 +23,7 @@ export const dummySkills: Skills[] = [
     _id: "2",
     createdAt: new Date(),
     category: "Design",
+    userId: "user1",
   },
   {
     skill: "JavaScript",
@@ -28,6 +31,7 @@ export const dummySkills: Skills[] = [
     _id: "3",
     createdAt: new Date(),
     category: "Technology",
+    userId: "user1",
   },
   {
     skill: "TypeScript",
@@ -35,6 +39,7 @@ export const dummySkills: Skills[] = [
     _id: "4",
     createdAt: new Date(),
     category: "Technology",
+    userId: "user1",
   },
   {
     skill: "React",
@@ -42,5 +47,6 @@ export const dummySkills: Skills[] = [
     _id: "5",
     createdAt: new Date(),
     category: "Technology",
+    userId: "user1",
   },
 ];

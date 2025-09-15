@@ -18,13 +18,13 @@ export default function DeleteModal({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[300px]">
         {" "}
-        <h2 className="text-lg font-semibold">
-          Are you sure yoy want to delete {skill.skill}?
-        </h2>
+        <p className="text-base">
+          Are you sure yoy want to delete <span className="font-semibold">{skill.skill}</span>?
+        </p>
         <p className="text-sm text-gray-500 px-0.5 bg-red-100 py-1 rounded">
           This action cannot be undone
         </p>
-        <FormButton onClick={() => deleteSkill(skill._id)} className="btn btn-primary w-full rounded-md mt-5 !py-3skil">
+        <FormButton onClick={() => deleteSkill(skill.userId, skill._id)}className="btn btn-primary w-full rounded-md mt-5 !py-3skil">
           Delete
         </FormButton>
       </DialogContent>

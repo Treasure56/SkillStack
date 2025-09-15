@@ -2,48 +2,73 @@ import { Skills } from "@/types/skills";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+// Define the shape of your Zustand store
 type SkillState = {
-  skills: Skills[]; // store multiple skills
-  setSkills: (skills: Skills[]) => void;
-  addSkill: (skill: Skills) => void;
-  editSkill: (id: string, patch: Partial<Skills>) => void;
-  deleteSkill: (id: string) => void;
+  // Object where each key is a userId, and the value is an array of skills for that user
+  skillsByUser: Record<string, Skills[]>;
+
+  // Add a new skill for a user
+  addSkill: (userId: string, skill: Skills) => void;
+
+  // Update a skill by id for a user
+  editSkill: (userId: string, skillId: string, patch: Partial<Skills>) => void;
+
+  // Delete a skill by id for a user
+  deleteSkill: (userId: string, skillId: string) => void;
+
+  // Get all skills for a user
+  getSkillsByUser: (userId: string) => Skills[];
+
+  // Clear ALL skills (for all users, e.g., when logging out admin)
   clearSkills: () => void;
 };
 
 export const useSkillStore = create<SkillState>()(
   persist(
-    (set) => ({
-      skills: [],
+    (set, get) => ({
+      // Initialize with no skills
+      skillsByUser: {},
 
-      // replace all skills at once
-      setSkills: (skills) => set(() => ({ skills })),
-
-      // add a new skill to the array
-      addSkill: (skill) =>
+      // Add a new skill for a specific user
+      addSkill: (userId, skill) =>
         set((state) => ({
-          skills: [...state.skills, skill],
+          skillsByUser: {
+            ...state.skillsByUser,
+            // Add the new skill to the user’s existing skills
+            [userId]: [...(state.skillsByUser[userId] || []), skill],
+          },
         })),
 
-      // update a skill by id
-      editSkill: (id, patch) =>
+      // Edit an existing skill for a user
+      editSkill: (userId, skillId, patch) =>
         set((state) => ({
-          skills: state.skills.map((s) =>
-            s._id === id ? { ...s, ...patch } : s
-          ),
+          skillsByUser: {
+            ...state.skillsByUser,
+            [userId]:
+              state.skillsByUser[userId]?.map((s) =>
+                s._id === skillId ? { ...s, ...patch } : s
+              ) || [],
+          },
         })),
 
-      // remove a skill by id
-      deleteSkill: (id) =>
+      // Delete a skill for a user
+      deleteSkill: (userId, skillId) =>
         set((state) => ({
-          skills: state.skills.filter((s) => s._id !== id),
+          skillsByUser: {
+            ...state.skillsByUser,
+            [userId]:
+              state.skillsByUser[userId]?.filter((s) => s._id !== skillId) || [],
+          },
         })),
 
-      // clear all skills
-      clearSkills: () => set(() => ({ skills: [] })),
+      // Get all skills for a user
+      getSkillsByUser: (userId) => get().skillsByUser[userId] || [],
+
+      // Clear all skills (for all users)
+      clearSkills: () => set(() => ({ skillsByUser: {} })),
     }),
     {
-      name: "skills-storage", // unique key in localStorage
+      name: "skills-storage", // localStorage key
     }
   )
 );
