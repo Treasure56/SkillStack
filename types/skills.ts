@@ -4,6 +4,7 @@ export type Skills = {
   skill: string;
   category: string;
   userId: string;
+  progress?: number;
   // level: "Beginner" | "Intermediate" | "Advanced" | "Expert";
   createdAt: Date;
 };

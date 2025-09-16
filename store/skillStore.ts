@@ -21,6 +21,8 @@ type SkillState = {
 
   // Clear ALL skills (for all users, e.g., when logging out admin)
   clearSkills: () => void;
+  // update progress
+  updateProgress: (userId: string, skillId: string, progress: number) => void;
 };
 
 export const useSkillStore = create<SkillState>()(
@@ -57,7 +59,8 @@ export const useSkillStore = create<SkillState>()(
           skillsByUser: {
             ...state.skillsByUser,
             [userId]:
-              state.skillsByUser[userId]?.filter((s) => s._id !== skillId) || [],
+              state.skillsByUser[userId]?.filter((s) => s._id !== skillId) ||
+              [],
           },
         })),
 
@@ -66,9 +69,20 @@ export const useSkillStore = create<SkillState>()(
 
       // Clear all skills (for all users)
       clearSkills: () => set(() => ({ skillsByUser: {} })),
+
+      updateProgress: (userId, skillId, progress) =>
+        set((state) => ({
+          skillsByUser: {
+            ...state.skillsByUser,
+            [userId]:
+              state.skillsByUser[userId]?.map((s) =>
+                s._id === skillId ? { ...s, progress } : s
+              ) || [],
+          },
+        })),
     }),
     {
-      name: "skills-storage", // localStorage key
+      name: "skill-storage", // unique name for storage (must be different from userStore
     }
   )
 );

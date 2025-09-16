@@ -1,6 +1,7 @@
 "use client";
 
 import { getCategoryColor, getCategoryIcon } from "@/app/data";
+import AddProgressModal from "@/app/user/(dashboard)/AddProgress";
 import DeleteModal from "@/app/user/(dashboard)/DeleteModal";
 import EdithSkill from "@/app/user/(dashboard)/EditSkill";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +15,8 @@ import { Skills } from "@/types/skills";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { LuPlus } from "react-icons/lu";
 
-export default function SkillsCard({ skill, category }: Skills) {
+export default function SkillsCard(props: Skills) {
+  const { skill, category } = props;
   const categoryIcon = getCategoryIcon(category);
   const categoryColorClass = getCategoryColor(category);
 
@@ -41,7 +43,7 @@ export default function SkillsCard({ skill, category }: Skills) {
           </DropdownMenuTrigger>
           <DropdownMenuContent className="space-y-2">
             <DeleteModal
-              skill={{ _id: crypto.randomUUID(), skill, category, createdAt: new Date() }}
+              skill={props}
             >
               <button className="text-brand-primary bg-red-100 rounded-lg p-2 w-full">
                 Delete
@@ -60,9 +62,11 @@ export default function SkillsCard({ skill, category }: Skills) {
           {category}
         </Badge>
 
-        <span className="text-xs font-medium inline-flex items-center btn btn-primary-border rounded-3xl !py-1">
+        <AddProgressModal skill={props}>
+          <span className="text-xs font-medium inline-flex items-center btn btn-primary-border rounded-3xl !py-1">
           <LuPlus /> Add Progress
         </span>
+        </AddProgressModal>
       </div>
     </div>
   );

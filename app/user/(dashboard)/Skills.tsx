@@ -1,19 +1,16 @@
-"use client"
+"use client";
 import SkillsCard from "@/app/components/ui/SkillsCard";
 import { useSkillStore } from "@/store/skillStore";
+import { useUserStore } from "@/store/userStore";
 import { LuListPlus } from "react-icons/lu";
 import AddSkill from "./AddSkill";
-import type { Skills } from "@/types/skills";
 
 export default function Skills() {
-  // example current userId (replace with your auth logic)
-  const currentUserId = "userA";  
-
-  // extract the function from store
   const getSkillsByUser = useSkillStore((state) => state.getSkillsByUser);
+  const currentUser = useUserStore((state) => state.user);
 
-  // call the function to get the skills array for this user
-  const skills: Skills [] = getSkillsByUser(currentUserId);
+  // Get skills for the logged-in user
+  const skills = currentUser ? getSkillsByUser(currentUser.username) : [];
 
   return (
     <div className="flex flex-col gap-3 py-12 w-full">
@@ -26,6 +23,7 @@ export default function Skills() {
           </button>
         </AddSkill>
       </div>
+
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5 py-5">
         {skills.length > 0 ? (
           skills.map((s) => <SkillsCard key={s._id} {...s} />)

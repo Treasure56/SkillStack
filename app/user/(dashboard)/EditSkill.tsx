@@ -1,3 +1,4 @@
+"use client";
 import AppInput from "@/app/components/forms/AppInput";
 import AppSelect from "@/app/components/forms/AppSelect";
 import FormButton from "@/app/components/forms/FormButton";
