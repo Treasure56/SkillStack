@@ -64,7 +64,7 @@ export default function EditSkill({
             placeholder="e.g. JavaScript"
           />
           <AppSelect
-            name="category"  // ✅ make sure formData works
+            name="category" 
             label="Category"
             options={[
               { label: "Technology", value: "technology" },
