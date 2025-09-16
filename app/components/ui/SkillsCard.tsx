@@ -50,7 +50,7 @@ export default function SkillsCard(props: Skills) {
               </button>
             </DeleteModal>
 
-            <EdithSkill>
+            <EdithSkill skillToEdit={props}>
               <button className="text-sky-500 w-full">Edit</button>
             </EdithSkill>
           </DropdownMenuContent>
